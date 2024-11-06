@@ -1,9 +1,16 @@
+# NOTE
+
+This is a fork of ExpansionPanel that was created for the purpose of re-publishing the library, as
+it was no longer available in previous repository. Check out the [Download](#download) section for
+new artifact location.
+
 # ExpansionPanel
+
 Expansion panels contain creation flows and allow lightweight editing of an element.
 
 *AndroidX Ready*
 
-Based on `Expansion Panels` described on Material Design Components 
+Based on `Expansion Panels` described on Material Design Components
 https://material.io/archive/guidelines/components/expansion-panels.html#
 
 [![screen](https://raw.githubusercontent.com/florent37/ExpansionPanel/master/medias/material-components-expansion-panels.png)](https://www.github.com/florent37/ExpansionPanel)
@@ -19,48 +26,38 @@ https://material.io/archive/guidelines/components/expansion-panels.html#
 <a href='https://ko-fi.com/A160LCC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 [ ![Download](https://api.bintray.com/packages/florent37/maven/expansionpanel/images/download.svg) ](https://bintray.com/florent37/maven/expansionpanel/_latestVersion)
+
 ```java
-dependencies {
-    implementation 'com.github.florent37:expansionpanel:1.2.4'
+dependencies{
+    implementation 'com.simla.android.florent37:expansionpanel:1.2.4'
 }
 ```
 
 # Usage
 
 ```xml
-<LinearLayout
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    >
 
-    <com.github.florent37.expansionpanel.ExpansionHeader
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:expansion_headerIndicator="@id/headerIndicator"
-        app:expansion_layout="@id/expansionLayout"
-        app:expansion_toggleOnClick="true">
+<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <com.github.florent37.expansionpanel.ExpansionHeader android:layout_height="wrap_content"
+        android:layout_width="match_parent" app:expansion_headerIndicator="@id/headerIndicator"
+        app:expansion_layout="@id/expansionLayout" app:expansion_toggleOnClick="true">
 
         <!-- HEADER -->
 
         ...
         <!-- HEADER INDICATOR -->
-        <ImageView
-               android:adjustViewBounds="true"
-               android:id="@+id/headerIndicator"
-               android:layout_gravity="center_vertical|right"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="16dp"
-               android:layout_width="wrap_content"
-               app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+        <ImageView android:adjustViewBounds="true" android:id="@+id/headerIndicator"
+            android:layout_gravity="center_vertical|right" android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp" android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
 
 
     </com.github.florent37.expansionpanel.ExpansionHeader>
 
-    <com.github.florent37.expansionpanel.ExpansionLayout
-        android:id="@+id/expansionLayout"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+    <com.github.florent37.expansionpanel.ExpansionLayout android:id="@+id/expansionLayout"
+        android:layout_height="wrap_content" android:layout_width="match_parent">
 
         <!-- CONTENT -->
 
@@ -74,7 +71,8 @@ dependencies {
 1. Connect with his Expansion Layout : `expansion_layout` (they must have the same parent)
 2. Define the indicator view with `expansion_headerIndicator` (the id of a view inside the header)
 3. If you want to expand/close when the header is clicked, setup `expansion_toggleOnClick`
-4. You can modify the indicator rotation with `expansion_headerIndicatorRotationExpanded` and `expansion_headerIndicatorRotationCollapsed`
+4. You can modify the indicator rotation with `expansion_headerIndicatorRotationExpanded`
+   and `expansion_headerIndicatorRotationCollapsed`
 
 # Layout
 
@@ -89,13 +87,13 @@ Use `.setEnable(true/false)` to enable/disable the expansion
 Just add a listener into ExpansionLayout (**not the header !**) to follow the expansion layout state
 
 ```java
-ExpansionLayout expansionLayout = findViewById(...);
-expansionLayout.addListener(new ExpansionLayout.Listener() {
-    @Override
-    public void onExpansionChanged(ExpansionLayout expansionLayout, boolean expanded) {
+ExpansionLayout expansionLayout=findViewById(...);
+        expansionLayout.addListener(new ExpansionLayout.Listener(){
+@Override
+public void onExpansionChanged(ExpansionLayout expansionLayout,boolean expanded){
 
-    }
-});
+        }
+        });
 ```
 
 # Open only one
@@ -113,6 +111,7 @@ expansionLayoutCollection.openOnlyOne(true);
 ```
 
 or direcly in xml with
+
 - ExpansionsViewGroupLinearLayout
 - ExpansionsViewGroupFrameLayout
 - ExpansionsViewGroupRelativeLayout
@@ -172,10 +171,11 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerHolder> {
 
 Update gradle, add ability to have only one listener at time
 
-For what? If you tried to debug ViewHolders with this layout, 
-then you might notice that over time addListener continues to add a listener, 
-which causes a lot of unnecessary listeners and, moreover, 
-there can be many listeners to one layouts in different ViewHolders due to which it may cause logic breakdown
+For what? If you tried to debug ViewHolders with this layout,
+then you might notice that over time addListener continues to add a listener,
+which causes a lot of unnecessary listeners and, moreover,
+there can be many listeners to one layouts in different ViewHolders due to which it may cause logic
+breakdown
 
 ```kotlin
 var isExpanded = false
@@ -199,7 +199,7 @@ expandableLayout.run {
 
 # Credits
 
-Author: Florent Champigny 
+Author: Florent Champigny
 
 Blog : [http://www.tutos-android-france.com/](http://www.tutos-android-france.com/)
 
